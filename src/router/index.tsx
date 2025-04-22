@@ -10,15 +10,14 @@ export const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-
     children: [
-      { path: "", element: <HomePage /> },
+      { path: "/", element: <HomePage /> },
       {
         path: "classmates/:id",
         element: <UserPage />,
         errorElement: <ErrorPage />,
       },
-      { path: "*", element: <Navigate to="/" /> },
     ],
   },
+  { path: "*", element: <Navigate to="/" /> },
 ]);

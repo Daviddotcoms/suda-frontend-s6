@@ -9,7 +9,6 @@ import { Filters } from "../enums/Filters";
 export const HomePage = () => {
   const [filter, setFilter] = useState<Filters>(Filters.All);
   const { classmatesQuery } = useClassmates({ filter });
-  console.log(filter);
 
   if (classmatesQuery.isLoading) {
     return <LoadingIcon />;

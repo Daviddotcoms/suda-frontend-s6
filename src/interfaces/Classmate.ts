@@ -6,4 +6,5 @@ export interface Classmate {
   age: number;
   username: string;
   email: string;
+  description: string
 }

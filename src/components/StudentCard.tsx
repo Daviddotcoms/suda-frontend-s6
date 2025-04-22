@@ -29,6 +29,7 @@ export const StudentCard = ({
   const presetData = () => {
     queryClient.setQueryData(["classmate", +classmate.id], classmate, {});
   };
+  const username = classmate.username.length > 14 ? classmate.username.slice(0, 14).trim() + "..." : classmate.username.trim()
 
   const canHover = hovered ? "hover:bg-gray-100 dark:hover:bg-gray-700" : "";
   const imgUrl =
@@ -40,7 +41,7 @@ export const StudentCard = ({
       className="animate-fadeIn active:transform-[scale(0.98)] duration-200"
     >
       {vertical ? (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div className="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <img
             className={`aspect-[450/450] duration-1000  rounded-t-lg select-none w-full`}
             src={classmate.image.includes("github") ? classmate.image : imgUrl}
@@ -48,16 +49,18 @@ export const StudentCard = ({
             style={{ viewTransitionName: `image-${classmate.id}` }}
           />
           <div className="p-5">
-            <h5 className="mb-0 text-2xl font-bold tracking-tight text-gray-900 dark:text-white select-none">
-              {classmate.firstName} {classmate.lastName}
-            </h5>
+            <div className="flex gap-2 items-end mb-2">
+              <h5 className="mb-0 text-2xl font-bold tracking-tight text-gray-900 dark:text-white select-none">
+                {classmate.firstName} {classmate.lastName}
+              </h5>
+              <h6 className="text-xl text-gray-600 mb-0">{`(${username})`}</h6>
+            </div>
             <p className="mb-4 font-normal text-gray-700 dark:text-gray-500">
               {classmate.email}
             </p>
             <p className="mb-3 font-semibold text-md text-white dark:text-gray-300 select-none">
-              Características
+              Habilidades
             </p>
-            <Badge text={classmate.username} />
             <Badge text={`${classmate.age.toString()} años`} />
             <Badge text={"React Developer"} />
             <Badge text={"Nestjs Developer"} color="#e0234e" />
