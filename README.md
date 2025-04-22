@@ -5,7 +5,9 @@
 1. Clonar este repositorio y el repositorio de la API
 
 ```bash
+# Repositorio del FrontEnd
 git clone https://github.com/Daviddotcoms/suda-frontend-s5.git
+
 # Repositorio de la API
 git clone https://github.com/Daviddotcoms/mockAPI.git
 ```
