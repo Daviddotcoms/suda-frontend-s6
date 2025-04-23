@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { Classmate } from "../interfaces/Classmate";
-import { Badge } from "./Badge";
+import { Badge } from "../shared/components/Badge";
 
 interface StudentCardProps {
   classmate: Classmate;
@@ -29,7 +29,10 @@ export const StudentCard = ({
   const presetData = () => {
     queryClient.setQueryData(["classmate", +classmate.id], classmate, {});
   };
-  const username = classmate.username.length > 14 ? classmate.username.slice(0, 14).trim() + "..." : classmate.username.trim()
+  const username =
+    classmate.username.length > 14
+      ? classmate.username.slice(0, 14).trim() + "..."
+      : classmate.username.trim();
 
   const canHover = hovered ? "hover:bg-gray-100 dark:hover:bg-gray-700" : "";
   const imgUrl =
@@ -53,7 +56,7 @@ export const StudentCard = ({
               <h5 className="mb-0 text-2xl font-bold tracking-tight text-gray-900 dark:text-white select-none">
                 {classmate.firstName} {classmate.lastName}
               </h5>
-              <h6 className="text-xl text-gray-600 mb-0">{`(${username})`}</h6>
+              <h6 className="text-xl text-gray-500 mb-0">{`(${username})`}</h6>
             </div>
             <p className="mb-4 font-normal text-gray-700 dark:text-gray-500">
               {classmate.email}

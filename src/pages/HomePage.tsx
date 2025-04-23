@@ -1,8 +1,8 @@
 import { useClassmates } from "../hooks/useClassmates";
 import { List } from "../components/List";
-import { NoData } from "../components/NoData";
+import { NoData } from "../shared/components/NoData";
 import { NavBar } from "../components/NavBar";
-import { LoadingIcon } from "../components/LoadingIcon";
+import { LoadingIcon } from "../shared/components/LoadingIcon";
 import { useState } from "react";
 import { Filters } from "../enums/Filters";
 
@@ -20,9 +20,9 @@ export const HomePage = () => {
   return (
     <>
       <NavBar filter={filter} onFilterChange={setFilter} />
-      <div className="flex flex-col justify-center items-center">
+      <main className="flex flex-col justify-center items-center">
         <List classmates={classmatesQuery.data} />
-      </div>
+      </main>
     </>
   );
 };

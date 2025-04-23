@@ -1,44 +1,32 @@
-import { useParams, useNavigate } from "react-router";
-import { IoArrowBackOutline } from "react-icons/io5";
+import { useParams } from "react-router";
 
 import { useClassmate } from "../hooks/useClassmate";
-import { LoadingIcon } from "../components/LoadingIcon";
+import { LoadingIcon } from "../shared/components/LoadingIcon";
 import { StudentCard } from "../components/StudentCard";
+import { UserDescription } from "../components/UserDescription";
+import { GoBackBtn } from "../shared/components/GoBackBtn";
 
 export const UserPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const { classmateQuery } = useClassmate({ id: +id! });
 
   return (
-    <div className={`pt-40 [view-transition-name:"image-${id}"]`}>
-      <button
-        style={{ viewTransitionName: "go-back" }}
-        onClick={() => navigate(-1)}
-        className="hover:opacity-70 active:opacity-50 active:transform-[scale(0.96)] border-2 px-3 py-2 rounded-3xl text-blue-600 flex items-center absolute left-20 top-10 gap-1"
-      >
-        <IoArrowBackOutline size={24} />
-        <p className="pb-0.5 text-lg">Regresar</p>
-      </button>
-      <div className="flex flex-col">
-        {classmateQuery.isLoading ? (
-          <LoadingIcon />
-        ) : (
-          <div className="grid grid-cols-3 gap-52">
-            <div></div>
-            <StudentCard
-              classmate={classmateQuery.data!}
-              hovered={false}
-              vertical
-            />
-            <div className="w-md h-fit dark:bg-gray-800 rounded-xl p-6 border-2 dark:border-gray-700">
-              <h1 className="mb-0 text-2xl text-gray-200">Descripción</h1>
-              <p className="text-gray-300 text-[16px] mt-2">{classmateQuery.data?.description}</p>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+    <main className={`pt-40`}>
+      <GoBackBtn />
+      {classmateQuery.isLoading ? (
+        <LoadingIcon />
+      ) : (
+        <section className="grid grid-cols-3 gap-48">
+          <span></span>
+          <StudentCard
+            classmate={classmateQuery.data!}
+            hovered={false}
+            vertical
+          />
+          <UserDescription classmate={classmateQuery.data!} />
+        </section>
+      )}
+    </main>
   );
 };
