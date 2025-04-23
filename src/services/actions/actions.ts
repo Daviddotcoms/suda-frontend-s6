@@ -29,6 +29,7 @@ export const getAllAction = async (): Promise<Classmate[]> => {
 };
 
 export const getByFilter = async (filter: Filters) => {
+  await sleep(1000);
   if (filter === Filters.Students) {
     return actions.getClassmatesAction();
   } else if (filter === Filters.Teachers) {
