@@ -30,8 +30,8 @@ export const StudentCard = ({
     queryClient.setQueryData(["classmate", +classmate.id], classmate, {});
   };
   const username =
-    classmate.username.length > 14
-      ? classmate.username.slice(0, 14).trim() + "..."
+    classmate.username.length > 15
+      ? classmate.username.slice(0, 15).trim() + "..."
       : classmate.username.trim();
 
   const canHover = hovered ? "hover:bg-gray-100 dark:hover:bg-gray-700" : "";
@@ -41,12 +41,12 @@ export const StudentCard = ({
   return (
     <div
       onMouseEnter={presetData}
-      className="animate-fadeIn active:transform-[scale(0.98)] duration-200"
+      className="animate-fadeIn active:transform-[scale(0.98)]"
     >
       {vertical ? (
-        <div className="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-[400px] bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <img
-            className={`aspect-[450/450] duration-1000  rounded-t-lg select-none w-full`}
+            className={`aspect-square rounded-t-lg select-none w-full`}
             src={classmate.image.includes("github") ? classmate.image : imgUrl}
             alt={`Imagen de ${classmate.firstName} ${classmate.lastName}`}
             style={{ viewTransitionName: `image-${classmate.id}` }}
