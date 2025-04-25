@@ -2,10 +2,10 @@ import { useParams } from "react-router";
 
 import { useClassmate } from "../hooks/useClassmate";
 import { LoadingIcon } from "../shared/components/LoadingIcon";
-import { StudentCard } from "../components/StudentCard";
+import { UserCard } from "../components/StudentCard";
 import { UserDescription } from "../components/UserDescription";
 import { GoBackBtn } from "../shared/components/GoBackBtn";
-import { Badge } from "../shared/components/Badge";
+import { Habilities } from "../components/Habilities";
 
 export const UserPage = () => {
   const { id } = useParams();
@@ -18,15 +18,8 @@ export const UserPage = () => {
         <LoadingIcon />
       ) : (
         <section className="grid grid-cols-3 gap-48 px-24">
-          <div className="mx-auto w-md h-fit rounded-xl p-6">
-            <h1 className="mb-6 text-2xl text-gray-200 font-semibold">
-              Habilidades
-            </h1>
-            {classmateQuery.data?.habilities.map((h) => (
-              <Badge text={h} key={self.crypto.randomUUID()} />
-            ))}
-          </div>
-          <StudentCard
+          <Habilities classmate={classmateQuery.data!} />
+          <UserCard
             classmate={classmateQuery.data!}
             hovered={false}
             vertical

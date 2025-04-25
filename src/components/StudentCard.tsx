@@ -4,17 +4,17 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Classmate } from "../interfaces/Classmate";
 import { Badge } from "../shared/components/Badge";
 
-interface StudentCardProps {
+interface UserCardProps {
   classmate: Classmate;
   hovered?: boolean;
   vertical?: boolean;
 }
 
-export const StudentCard = ({
+export const UserCard = ({
   classmate,
   hovered = true,
   vertical = false,
-}: StudentCardProps) => {
+}: UserCardProps) => {
   const queryClient = useQueryClient();
 
   // * This just was a test
