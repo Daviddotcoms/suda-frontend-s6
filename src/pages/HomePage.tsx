@@ -17,6 +17,7 @@ export const HomePage = () => {
   if (!classmatesQuery.data) {
     return <NoData />;
   }
+
   return (
     <>
       <NavBar filter={filter} onFilterChange={setFilter} />
