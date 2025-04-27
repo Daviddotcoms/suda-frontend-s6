@@ -1,5 +1,5 @@
 import { Classmate } from "../interfaces/Classmate";
-import { UserCard } from "./StudentCard";
+import { UserCard } from "./UserCard";
 
 interface ListProps {
   classmates: Classmate[];
