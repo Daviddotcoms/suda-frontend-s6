@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { Classmate } from "../interfaces/Classmate";
-import { Badge } from "../shared/components/Badge";
 
 interface UserCardProps {
   classmate: Classmate;
@@ -29,15 +28,13 @@ export const UserCard = ({
   const presetData = () => {
     queryClient.setQueryData(["classmate", +classmate.id], classmate, {});
   };
+
   const username =
     classmate.username.length > 15
       ? classmate.username.slice(0, 15).trim() + "..."
       : classmate.username.trim();
 
   const canHover = hovered ? "hover:bg-gray-100 dark:hover:bg-gray-700" : "";
-  const imgUrl =
-    "https://static.vecteezy.com/system/resources/previews/023/465/688/non_2x/contact-dark-mode-glyph-ui-icon-address-book-profile-page-user-interface-design-white-silhouette-symbol-on-black-space-solid-pictogram-for-web-mobile-isolated-illustration-vector.jpg";
-
   return (
     <div
       onMouseEnter={presetData}
@@ -47,7 +44,7 @@ export const UserCard = ({
         <div className="w-[400px] bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <img
             className={`aspect-square rounded-t-lg select-none w-full`}
-            src={classmate.image.includes("github") ? classmate.image : imgUrl}
+            src={classmate.image}
             alt={`Imagen de ${classmate.firstName} ${classmate.lastName}`}
             style={{ viewTransitionName: `image-${classmate.id}` }}
           />
@@ -56,17 +53,13 @@ export const UserCard = ({
               <h5 className="mb-0 text-2xl font-bold tracking-tight text-gray-900 dark:text-white select-none">
                 {classmate.firstName} {classmate.lastName}
               </h5>
-              <h6 className="text-xl text-gray-500 mb-0">{`(${username})`}</h6>
+              <a className="cursor-pointer" id="username">
+                <h6 className="text-xl text-gray-500 mb-0 select-none">{`(${username})`}</h6>
+              </a>
             </div>
-            <p className="mb-4 font-normal text-gray-700 dark:text-gray-500">
+            <p className="mb-1 font-normal text-gray-700 dark:text-gray-500 select-none">
               {classmate.email}
             </p>
-            <p className="mb-3 font-semibold text-md text-white dark:text-gray-300 select-none">
-              Habilidades
-            </p>
-            <Badge text={`${classmate.age.toString()} años`} />
-            <Badge text={"React Developer"} />
-            <Badge text={"Nestjs Developer"} color="#e0234e" />
           </div>
         </div>
       ) : (
@@ -78,15 +71,15 @@ export const UserCard = ({
         >
           <img
             className={`aspect-[450/450] duration-1000 object-cover rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg`}
-            src={classmate.image.includes("github") ? classmate.image : imgUrl}
+              src={classmate.image}
             alt={`Imagen de ${classmate.firstName} ${classmate.lastName}`}
             style={{ viewTransitionName: `image-${classmate.id}` }}
           />
-          <div className="flex flex-col justify-between p-4 leading-normal ml-2">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <div className="flex flex-col justify-between p-4 leading-normal ml-2 h-full py-16">
+              <h5 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {classmate.firstName} {classmate.lastName}
             </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-gray-700 dark:text-gray-400">
               {classmate.email}
             </p>
           </div>
