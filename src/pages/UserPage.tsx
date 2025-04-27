@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import { useClassmate } from "../hooks/useClassmate";
 import { LoadingIcon } from "../shared/components/LoadingIcon";
-import { UserCard } from "../components/StudentCard";
+import { UserCard } from "../components/UserCard";
 import { UserDescription } from "../components/UserDescription";
 import { GoBackBtn } from "../shared/components/GoBackBtn";
 import { Habilities } from "../components/Habilities";
