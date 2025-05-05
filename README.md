@@ -15,7 +15,7 @@
 
 ```bash
 # Repositorio del FrontEnd
-git clone https://github.com/Daviddotcoms/suda-frontend-s5.git
+git clone https://github.com/Daviddotcoms/suda-frontend-s6.git
 
 # Repositorio de la API
 git clone https://github.com/Daviddotcoms/mockAPI.git
@@ -28,6 +28,6 @@ git clone https://github.com/Daviddotcoms/mockAPI.git
 npm install
 ```
 
-3. Crear la imágen del FrontEnd (suda-frontend-s5)
+3. Crear la imágen del FrontEnd (suda-frontend-s6)
 
 4. Adjuntar una imágen del frontend corriendo en un contenedor en el puerto **8000**
